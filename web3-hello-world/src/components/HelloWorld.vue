@@ -8,11 +8,7 @@
     </ul>
     <h3>Essential Links</h3>
     <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
+      <button v-on:click="displayWeb3Props()" > Web3</button>
     </ul>
     <h3>Ecosystem</h3>
     <ul>
@@ -30,6 +26,16 @@ export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  methods: {
+      displayWeb3Props(){
+        const Web3 = require("web3")
+        const web3 = new Web3("http://localhost:8545")
+        web3.eth.getBlockNumber(function(error,result){
+          console.log(result);
+        })
+        web3.eth.getAccounts(console.log);
+      }
   }
 }
 </script>
